@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Post\StoreRequest;
+use App\Http\Requests\Post\UpdateRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\PostTag;
@@ -24,22 +26,14 @@ class PostController extends Controller
         return view('post.create', compact('categories', 'tags'));
     }
 
-    public function store()
+    public function store(StoreRequest $request)
     {
-        $data = request()->validate([
-            'title' => 'string',
-            'content' => 'string',
-            'image' => 'string',
-            'category_id' => '',
-            'tags' => '',
-        ]);
+        $data = $request->validated();
         $tags = $data['tags'];
         unset($data['tags']);
 
         $post = Post::create($data);
-
         $post->tags()->attach($tags);
-
 
         return redirect()->route('post.index');
     }
@@ -57,15 +51,9 @@ class PostController extends Controller
         return view('post.edit', compact('post', 'categories', 'tags'));
     }
 
-    public function update(Post $post)
+    public function update(UpdateRequest $request, Post $post)
     {
-
-        $data = request()->validate([
-            'title' => 'string',
-            'content' => 'string',
-            'image' => 'string',
-            'tags' => '',
-        ]);
+        $data = $request->validated();
         $tags = $data['tags'];
         unset($data['tags']);
 
@@ -100,7 +88,7 @@ class PostController extends Controller
         $post::FirstOrCreate([
             'title' => 'some some'
         ], [
-            'title' => 'another title of post',
+            'title' => 'another title of Post',
             'content' => 'some inter',
             'image' => 'some imageblbalbalb.sda',
             'likes' => '222',
@@ -114,9 +102,9 @@ class PostController extends Controller
     public function updateOrCreate()
     {
         $post = Post::updateOrCreate([
-            'title' => 'title of post'
+            'title' => 'title of Post'
         ], [
-            'title' => 'updateORcreate title of post',
+            'title' => 'updateORcreate title of Post',
             'content' => 'updateORcreate some inter',
             'image' => 'updateORcreate imageblbalbalb.sda',
             'likes' => '555',

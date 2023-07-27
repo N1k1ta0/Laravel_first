@@ -21,22 +21,22 @@ use App\Http\Controllers\PostController;
 Route::get('/', function (){
     return 'web php';
 });
-
 Route::get('/posts', [PostController::class,'index'])->name('post.index');
+Route::get('/post/create',  [PostController::class,'create'])->name('post.create');
+
 Route::get('/posts/{post}', [PostController::class,'show'])->name('post.show');
 Route::get('/posts/{post}/edit', [PostController::class,'edit'])->name('post.edit');
 Route::patch('/posts/{post}', [PostController::class,'update'])->name('post.update');
 Route::delete('/posts/{post}', [PostController::class,'destroy'])->name('post.delete');
 
 
-Route::get('/post/create',  [PostController::class,'create'])->name('post.create');
 Route::post('/post/store',  [PostController::class,'store'])->name('post.store');
 
 
-Route::get('/post/update',  [PostController::class,'update']);
-Route::get('/post/delete',  [PostController::class,'delete']);
-Route::get('/post/Firs_Or_Create',  [PostController::class,'FirstOrCreate']);
-Route::get('/post/Update_Or_Create',  [PostController::class,'UpdateOrCreate']);
+Route::get('/Post/update',  [PostController::class,'update']);
+Route::get('/Post/delete',  [PostController::class,'delete']);
+Route::get('/Post/Firs_Or_Create',  [PostController::class,'FirstOrCreate']);
+Route::get('/Post/Update_Or_Create',  [PostController::class,'UpdateOrCreate']);
 
 
 Route::get('/main',  [MainController::class,'index'])->name('main.index');

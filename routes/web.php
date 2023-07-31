@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\PhotoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
@@ -21,22 +22,22 @@ use App\Http\Controllers\PostController;
 Route::get('/', function (){
     return 'web php';
 });
-Route::get('/posts', [PostController::class,'index'])->name('post.index');
-Route::get('/post/create',  [PostController::class,'create'])->name('post.create');
+Route::get('/posts', [PhotoController::class,'index'])->name('post.index');
+Route::get('/post/create',  [PhotoController::class,'create'])->name('post.create');
 
-Route::get('/posts/{post}', [PostController::class,'show'])->name('post.show');
-Route::get('/posts/{post}/edit', [PostController::class,'edit'])->name('post.edit');
-Route::patch('/posts/{post}', [PostController::class,'update'])->name('post.update');
-Route::delete('/posts/{post}', [PostController::class,'destroy'])->name('post.delete');
-
-
-Route::post('/post/store',  [PostController::class,'store'])->name('post.store');
+Route::get('/posts/{post}', [PhotoController::class,'show'])->name('post.show');
+Route::get('/posts/{post}/edit', [PhotoController::class,'edit'])->name('post.edit');
+Route::patch('/posts/{post}', [PhotoController::class,'update'])->name('post.update');
+Route::delete('/posts/{post}', [PhotoController::class,'destroy'])->name('post.delete');
 
 
-Route::get('/Post/update',  [PostController::class,'update']);
-Route::get('/Post/delete',  [PostController::class,'delete']);
-Route::get('/Post/Firs_Or_Create',  [PostController::class,'FirstOrCreate']);
-Route::get('/Post/Update_Or_Create',  [PostController::class,'UpdateOrCreate']);
+Route::post('/post/store',  [PhotoController::class,'store'])->name('post.store');
+
+
+Route::get('/Post/update',  [PhotoController::class,'update']);
+Route::get('/Post/delete',  [PhotoController::class,'delete']);
+Route::get('/Post/Firs_Or_Create',  [PhotoController::class,'FirstOrCreate']);
+Route::get('/Post/Update_Or_Create',  [PhotoController::class,'UpdateOrCreate']);
 
 
 Route::get('/main',  [MainController::class,'index'])->name('main.index');

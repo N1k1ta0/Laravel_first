@@ -15,12 +15,12 @@ class Post extends Model
 
 public function category()
 {
-    return $this->beLongsTo(Category::class, 'categoty_id', 'id');
+    return $this->belongsTo(Category::class, 'categoty_id', 'id');
 }
 
 public function tags()
 {
-    return $this->beLongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
+    return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
 }
 
 }

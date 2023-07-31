@@ -33,7 +33,7 @@ class PostController extends Controller
         unset($data['tags']);
 
         $post = Post::create($data);
-        $post->tags()->attach($tags);
+//        $post->tags()->attach($tags);
 
         return redirect()->route('post.index');
     }

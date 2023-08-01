@@ -22,13 +22,13 @@ use App\Http\Controllers\PostController;
 Route::get('/', function (){
     return 'web php';
 });
-//Route::get('/posts', [PhotoController::class,'index'])->name('post.index');
-Route::get('/post/create',  [PhotoController::class,'create'])->name('posts.create');
+//Route::get('/posts', [PhotoController::class,'index'])->name('posts.index');
+Route::get('/posts/create',  [PhotoController::class,'create'])->name('posts.create');
 
-//Route::get('/posts/{post}', [PhotoController::class,'show'])->name('post.show');
-//Route::get('/posts/{post}/edit', [PhotoController::class,'edit'])->name('post.edit');
-//Route::patch('/posts/{post}', [PhotoController::class,'update'])->name('post.update');
-//Route::delete('/posts/{post}', [PhotoController::class,'destroy'])->name('post.delete');
+//Route::get('/posts/{posts}', [PhotoController::class,'show'])->name('posts.show');
+//Route::get('/posts/{posts}/edit', [PhotoController::class,'edit'])->name('posts.edit');
+//Route::patch('/posts/{posts}', [PhotoController::class,'update'])->name('posts.update');
+//Route::delete('/posts/{posts}', [PhotoController::class,'destroy'])->name('posts.delete');
 
 
 
@@ -36,7 +36,7 @@ Route::resource('posts', PhotoController::class);
 
 
 
-Route::post('/post/store',  [PhotoController::class,'store'])->name('post.store');
+Route::post('/posts/store',  [PhotoController::class,'store'])->name('posts.store');
 
 Route::get('/Post/update',  [PhotoController::class,'update']);
 Route::get('/Post/delete',  [PhotoController::class,'delete']);

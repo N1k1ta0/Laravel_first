@@ -8,6 +8,7 @@ use App\Http\Requests\StorePhotoRequest;
 use App\Http\Requests\UpdatePhotoRequest;
 use App\Models\Post;
 use App\Models\Tag;
+use Illuminate\View\View;
 
 class PhotoController extends Controller
 {
@@ -17,7 +18,7 @@ class PhotoController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('post.index', compact('posts'));
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -27,7 +28,7 @@ class PhotoController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return view('post.create', compact('categories', 'tags'));
+        return view('posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -42,7 +43,7 @@ class PhotoController extends Controller
         $post = Post::create($data);
         $post->tags()->attach($tags);
 
-        return redirect()->route('post.index');
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -51,7 +52,7 @@ class PhotoController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        return view('post.show', compact('post'));
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -62,7 +63,7 @@ class PhotoController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
         $post = Post::firstOrFail();
-        return view('post.edit', compact('post', 'categories', 'tags'));
+        return view('posts.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -79,7 +80,7 @@ class PhotoController extends Controller
         $post->update($data);
         $post->tags()->sync($tags);
 
-        return redirect()->route('post.show', $post->id);
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**
@@ -88,6 +89,6 @@ class PhotoController extends Controller
     public function destroy(Photo $photo)
     {
         $post->delete();
-        return redirect()->route('post.index', $post->id);
+        return redirect()->route('posts.index', $post->id);
     }
 }

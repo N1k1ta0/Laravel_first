@@ -5,7 +5,7 @@
             <div>{{ $post->content }}</div>
     </div>
     <div>
-        <a href="{{ route('posts.update', $post->id) }}">Edit</a>
+        <a href="{{ route('posts.edit', $post->id) }}">Edit</a>
     </div>
     <div>
         <form action="{{ route('posts.destroy', $post->id) }}" method="post">

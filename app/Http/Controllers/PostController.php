@@ -38,7 +38,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePhotoRequest $request)
+    public function store(StoreRequest $request)
     {
         $data = $request->validated();
         $tags = $data['tags'];
@@ -73,7 +73,7 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePhotoRequest $request, Photo $photo)
+    public function update(UpdateRequest $request, Photo $photo)
     {
         $data = $request->validated();
 //        dd($data);
@@ -83,7 +83,6 @@ class PostController extends Controller
         $post = Post::firstOrFail();
         $post->update($data);
         $post->tags()->sync($tags);
-
         return redirect()->route('posts.show', $post->id);
     }
 

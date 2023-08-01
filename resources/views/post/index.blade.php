@@ -2,10 +2,10 @@
 @section('content')
     <div>
         <div>
-            <a href="{{ route('post.create') }}">Add one</a>
+            <a href="{{ route('posts.create') }}">Add one</a>
         </div>
         @foreach($posts as $post)
-            <div><a href="{{ route('post.show', $post->id) }}">{{ $post->id }}. {{ $post->title }}</a></div>
+            <div><a href="{{ route('posts.show', $post->id) }}">{{ $post->id }}. {{ $post->title }}</a></div>
         @endforeach
     </div>
 @endsection

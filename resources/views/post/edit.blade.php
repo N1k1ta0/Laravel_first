@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
 
-    <form action="{{ route('post.update', $post->id) }}" method="post">
+    <form action="{{ route('posts.update', $post->id) }}" method="post">
         @csrf
         @method('patch')
         <button class="ease-in duration-300 bg-yellow-500 ">Button A</button>

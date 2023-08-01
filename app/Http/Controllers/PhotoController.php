@@ -51,7 +51,6 @@ class PhotoController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        dd($post);
         return view('post.show', compact('post'));
     }
 
@@ -62,6 +61,7 @@ class PhotoController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
+        $post = Post::firstOrFail();
         return view('post.edit', compact('post', 'categories', 'tags'));
     }
 
@@ -71,11 +71,14 @@ class PhotoController extends Controller
     public function update(UpdatePhotoRequest $request, Photo $photo)
     {
         $data = $request->validated();
+//        dd($data);
         $tags = $data['tags'];
         unset($data['tags']);
 
+        $post = Post::firstOrFail();
         $post->update($data);
         $post->tags()->sync($tags);
+
         return redirect()->route('post.show', $post->id);
     }
 

@@ -15,7 +15,7 @@
         <nav>
             <ul class="gap-10  flex flex-row">
                 <li><a href="{{ route('main.index') }}">Main</a></li>
-                <li><a href="{{ route('post.index') }}">Post</a></li>
+                <li><a href="{{ route('posts.index') }}">Post</a></li>
                 <li><a href="{{ route('about.index') }}">About</a></li>
                 <li><a href="{{ route('contact.index') }}">Contacts</a></li>
             </ul>

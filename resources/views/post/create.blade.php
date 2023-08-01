@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
 
-    <form action="{{ route('post.store') }}" method="post">
+    <form action="{{ route('posts.store') }}" method="post">
         @csrf
 
         <button class="ease-in duration-300 bg-yellow-500 ">Button A</button>

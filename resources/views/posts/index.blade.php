@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-    <div>
+    <div >
         <div>
             <a href="{{ route('posts.create') }}">Add one</a>
         </div>

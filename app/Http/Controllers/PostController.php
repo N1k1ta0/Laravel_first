@@ -19,8 +19,28 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        return view('posts.index', compact('posts'));
+        $id = intval(htmlspecialchars(trim(request('category_id'))));
+        $title = htmlspecialchars(trim(request('title')));
+
+        $posts = Post::when($id > 0, function ($query) use ($id) {
+            $query->whereCategoryId($id);
+
+        })->when(!empty($title), function ($query) use ($title) {
+
+            $query->where('title', 'like', "%{$title}%");
+        })->get();
+
+        dd($title);
+//        $query = Post::query();
+//
+//        if ($id > 0) {
+//            $query->where('category_id', $id);
+//        }
+//        $posts = $query->get();
+//        dd($posts, $id);
+
+//        $posts = Post::all();
+//        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -87,7 +107,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Photo $photo)
+    public function destroy(Post $post)
     {
         $post->delete();
         return redirect()->route('posts.index', $post->id);

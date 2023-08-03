@@ -5,6 +5,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagesController;
 
 
 /*
@@ -17,6 +19,8 @@ use App\Http\Controllers\PostController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', [PagesController::class, 'index'])->name('home');
+
 
 Route::get('/', function (){
     return 'web php';

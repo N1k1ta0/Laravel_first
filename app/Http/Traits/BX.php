@@ -134,6 +134,8 @@ trait BX
                 $out = curl_exec($obCurl);
                 $info = curl_getinfo($obCurl);
 
+//                dd(curl_error($obCurl), $obCurl, $info);
+
                 if (curl_errno($obCurl)) {
                     $info['curl_error'] = curl_error($obCurl);
                 }

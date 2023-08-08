@@ -30,7 +30,8 @@ class PostController extends Controller
             $query->where('title', 'like', "%{$title}%");
         })->get();
 
-        dd($title);
+       return view('posts.index', compact('posts'));
+//        dd($title);
 //        $query = Post::query();
 //
 //        if ($id > 0) {

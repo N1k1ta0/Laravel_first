@@ -1,5 +1,20 @@
 @extends('layouts.admin')
 
-@section('connect')
-2222222
+@section('content')
+<div>
+    <div>
+        <a href="{{ route('posts.create') }}">Add 2</a>
+    </div>
+    @foreach($posts as $post)
+    <div>
+        <a href="{{ route ('posts.show', $post->id) }}">{{ $post->id }}. {{ $post->title }}</a>
+    </div>
+    @endforeach
+    <div class="mt-3">
+    @foreach($posts->links() as $post)
+        {{ $post }}
+    @endforeach
+    </div>
+</div>
+
 @endsection

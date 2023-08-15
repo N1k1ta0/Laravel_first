@@ -9,7 +9,6 @@
                             <i class="nav-icon fas fa-align-justify"></i>
                             <p>
                                 Posts
-                                
                                 <span class="badge badge-info right">2</span>
                             </p>
                         </a>

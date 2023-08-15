@@ -3,7 +3,7 @@
 @section('content')
 <div>
     <div>
-        <a href="{{ route('posts.create') }}">Add 2</a>
+        <a href="{{ route('posts.create') }}">Add one1</a>
     </div>
     @foreach($posts as $post)
     <div>

@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PagesController;
+use Illuminate\Support\Facades\Auth;
+
 
 
 /*
@@ -18,12 +21,11 @@ use App\Http\Controllers\PagesController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/qwe', [PagesController::class, 'BX'])->name('home');
+
+Route::get('/qwe', [PagesController::class, 'BX']);
 
 
-Route::get('/', function () {
-    return 'web php';
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 //Route::get('/posts', [PostController::class,'index'])->name('posts.index');
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 
@@ -49,7 +51,6 @@ Route::group(['namespase' => 'admin', 'prefix' => 'admin'], function () {
     Route::group(['namespase' => 'post'], function () {
 
         Route::get('/post', [App\Http\Controllers\Admin\Post\IndexController::class, 'index'])->name('admin.post.index');
-
     });
 });
 
@@ -59,3 +60,7 @@ Route::get('/contacts', [ContactController::class, 'index'])->name('contact.inde
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

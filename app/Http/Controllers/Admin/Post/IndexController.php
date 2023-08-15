@@ -11,15 +11,6 @@ class IndexController extends Controller
 {
     public function index()//FilterRequest $request)
     {
-
-
-
-
-
-
-
-
-
         // $filter = app()->make(PostFilter::class, ['queryParams' => array_filter($data)]);
         $posts = Post::simplePaginate(5);
         // $posts = [];

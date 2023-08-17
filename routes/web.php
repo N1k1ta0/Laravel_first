@@ -47,7 +47,7 @@ Route::get('/Post/Update_Or_Create', [PostController::class, 'UpdateOrCreate']);
 
 
 // админская панель
-Route::group(['namespase' => 'admin', 'prefix' => 'admin'], function () {
+Route::group(['namespase' => 'admin', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::group(['namespase' => 'post'], function () {
 
         Route::get('/post', [App\Http\Controllers\Admin\Post\IndexController::class, 'index'])->name('admin.post.index');

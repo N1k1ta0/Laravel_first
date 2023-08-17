@@ -11,6 +11,7 @@ use App\Models\PostTag;
 use App\Models\Tag;
 use Faker\Provider\Person;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -19,6 +20,9 @@ class PostController extends Controller
      */
     public function index()
     {
+
+        $this->authorize('view', Auth::user());
+
         $id = intval(htmlspecialchars(trim(request('category_id'))));
         $title = htmlspecialchars(trim(request('title')));
 
@@ -94,8 +98,8 @@ class PostController extends Controller
      */
     public function update(UpdateRequest $request, Photo $photo)
     {
+        
         $data = $request->validated();
-//        dd($data);
         $tags = $data['tags'];
         unset($data['tags']);
 

@@ -15,12 +15,9 @@ class AdminPanelMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    {
-        // dd(Auth::user());
-       
+    {       
         if (Auth::user() == null || Auth::user()->role != 'admin')
         {
-             
             return redirect()->route('home');
         }
         return $next($request);

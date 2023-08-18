@@ -20,9 +20,6 @@ class PostController extends Controller
      */
     public function index()
     {
-
-        $this->authorize('view', Auth::user());
-
         $id = intval(htmlspecialchars(trim(request('category_id'))));
         $title = htmlspecialchars(trim(request('title')));
 

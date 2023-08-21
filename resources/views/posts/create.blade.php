@@ -9,7 +9,7 @@
         {{ old('content') }}
 
         <label for="title">title</label>
-        <input name="title" type="text" id="title" value="title"> <br>
+        <input  type="text" class="form-control" placeholder="title" aria-label="Recipient's username" aria-describedby="button-addon2"> <br>
 
         @error('content')
         <p class="bg-red-500 hover:bg-sky-700">{{ $message }}</p>
@@ -23,9 +23,17 @@
         <p class="bg-red-500 hover:bg-sky-700">{{ $message }}</p>
         @enderror
         {{ old('content') }}
-
+        name="image"
         <label for="image">image</label>
-        <input name="image" type="text" id="image" value="title"> <br>
+        <input  type="text" id="image" value="title"> <br>
+
+
+
+
+
+
+
+        
 
         <button type="submit" class="bg-sky-500 hover:bg-sky-700 rounded-full">hesoyam</button>
 

@@ -26,10 +26,26 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-
                 <a class="navbar-brand" href="{{ url('/posts') }}">
-                    posts
+                    Posts
                 </a>
+                <a class="navbar-brand" href="{{ route('main.index') }}">
+                    Main
+                </a>
+                <a class="navbar-brand" href="{{ route('about.index') }}">
+                    About
+                </a>
+                <a class="navbar-brand" href="{{ route('contact.index') }}">
+                    Contacts
+                </a>
+                @if (Auth::user() != null && Auth::user()->role == 'admin')
+                <a class="navbar-brand" href="{{ route('admin.post.index') }}">
+                    Admin
+                </a>
+                @endif
+           <!-- <a class="navbar-brand" href="{{ route('posts.index') }}">
+                    Posts
+                </a> -->
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -39,12 +55,8 @@
                     <!-- Left Side Of Navbar -->
                     <div class="navbar-nav me-auto">
                         <div class="gap-10  flex flex-row">
-                            <a href="{{ route('main.index') }}">Main</a>
-                            <a href="{{ route('posts.index') }}">Post</a>
-                            <a href="{{ route('about.index') }}">About</a>
-                            <a href="{{ route('contact.index') }}">Contacts</a>
-                            <a href="{{ route('admin.post.index') }}">Admin</a>
-                           
+
+
                         </div>
                     </div>
 
@@ -91,8 +103,6 @@
         </main>
     </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
-integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
-crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </html>

@@ -25,24 +25,23 @@ class PostController extends Controller
 
         $posts = Post::when($id > 0, function ($query) use ($id) {
             $query->whereCategoryId($id);
-
         })->when(!empty($title), function ($query) use ($title) {
 
             $query->where('title', 'like', "%{$title}%");
         })->get();
 
-       return view('posts.index', compact('posts'));
-//        dd($title);
-//        $query = Post::query();
-//
-//        if ($id > 0) {
-//            $query->where('category_id', $id);
-//        }
-//        $posts = $query->get();
-//        dd($posts, $id);
+        return view('posts.index', compact('posts'));
+        //        dd($title);
+        //        $query = Post::query();
+        //
+        //        if ($id > 0) {
+        //            $query->where('category_id', $id);
+        //        }
+        //        $posts = $query->get();
+        //        dd($posts, $id);
 
-//        $posts = Post::all();
-//        return view('posts.index', compact('posts'));
+        //        $posts = Post::all();
+        //        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -66,7 +65,6 @@ class PostController extends Controller
 
         $post = Post::create($data);
         $post->tags()->attach($tags);
-
         return redirect()->route('posts.index');
     }
 
@@ -95,7 +93,7 @@ class PostController extends Controller
      */
     public function update(UpdateRequest $request, Photo $photo)
     {
-        
+
         $data = $request->validated();
         $tags = $data['tags'];
         unset($data['tags']);

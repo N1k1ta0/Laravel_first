@@ -27,14 +27,6 @@
         <label for="image">image</label>
         <input  type="text" id="image" value="title"> <br>
 
-
-
-
-
-
-
-        
-
         <button type="submit" class="bg-sky-500 hover:bg-sky-700 rounded-full">hesoyam</button>
 
         <div class="my-8">
